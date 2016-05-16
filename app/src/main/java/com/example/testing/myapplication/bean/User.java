@@ -12,6 +12,8 @@ public class User {
   public String email;
   public String followers;
 
+
+
   @Override public String toString() {
     return "User{" +
         "login='" + login + '\'' +
