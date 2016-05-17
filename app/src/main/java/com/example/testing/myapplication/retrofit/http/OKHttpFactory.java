@@ -26,6 +26,9 @@ enum OKHttpFactory {
         //打印请求log
         .addInterceptor(interceptor)
 
+        //添加UA
+        .addInterceptor(new UserAgentInterceptor(HttpHelper.getUserAgent()))
+
         //失败重连
         .retryOnConnectionFailure(true)
 
