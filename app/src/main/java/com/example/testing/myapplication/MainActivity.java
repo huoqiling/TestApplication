@@ -11,6 +11,17 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    new RetrofitFragment();
+    getSupportFragmentManager().beginTransaction().add(new RetrofitFragment(), "retrofit").commit();
+
+    //String url = "https://api.github.com/users/baiiu";
+    //OkHttpUtils.get().url(url).build().execute(new StringCallback() {
+    //  @Override public void onError(Call call, Exception e) {
+    //    LogUtil.d(e.toString());
+    //  }
+    //
+    //  @Override public void onResponse(String response) {
+    //    LogUtil.d(response);
+    //  }
+    //});
   }
 }

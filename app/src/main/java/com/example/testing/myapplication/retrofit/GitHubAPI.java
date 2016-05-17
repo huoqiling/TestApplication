@@ -1,5 +1,6 @@
 package com.example.testing.myapplication.retrofit;
 
+import com.example.testing.myapplication.bean.GankIODay;
 import com.example.testing.myapplication.bean.GankIOHistory;
 import com.example.testing.myapplication.bean.Repo;
 import com.example.testing.myapplication.bean.User;
@@ -12,6 +13,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -149,5 +151,9 @@ public interface GitHubAPI {
    * ===========================================================
    * 另外的一个链接,不是基于baseUrl,使用 @url 直接传入url即可
    */
-  @GET Call<GankIOHistory> gankIOHistory(@Url String url);
+  @Headers("Cache-Control:no-cache,max-age=0") @GET Call<GankIOHistory> gankIOHistory(
+      @Url String url);
+
+  //http://gank.io/api/day/2015/08/07
+  @GET Call<GankIODay> getOneDay(@Url String url);
 }

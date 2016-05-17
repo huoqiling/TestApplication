@@ -1,5 +1,8 @@
 package com.example.testing.myapplication.retrofit.http;
 
+import com.example.testing.myapplication.retrofit.http.interceptor.AllCachedInterceptor;
+import com.example.testing.myapplication.retrofit.http.interceptor.UserAgentInterceptor;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -26,8 +29,15 @@ enum OKHttpFactory {
         //打印请求log
         .addInterceptor(interceptor)
 
+        //stetho,可以在chrome中查看请求
+        .addNetworkInterceptor(new StethoInterceptor())
+
         //添加UA
         .addInterceptor(new UserAgentInterceptor(HttpHelper.getUserAgent()))
+
+        //走缓存
+        .addInterceptor(new AllCachedInterceptor())
+        .addNetworkInterceptor(new AllCachedInterceptor())
 
         //失败重连
         .retryOnConnectionFailure(true)

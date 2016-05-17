@@ -3,6 +3,7 @@ package com.example.testing.myapplication.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import com.example.testing.myapplication.bean.GankIODay;
 import com.example.testing.myapplication.bean.GankIOHistory;
 import com.example.testing.myapplication.bean.Repo;
 import com.example.testing.myapplication.bean.User;
@@ -21,28 +22,42 @@ import retrofit2.Response;
 public class RetrofitFragment extends Fragment {
 
   @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-    normalGet();
-    getWithParams();
-    post();
+    super.onActivityCreated(savedInstanceState);
+    //normalGet();
+    //getWithParams();
+    //post();
+
     anotherUrl();
+    getOneDay();
   }
 
   private void normalGet() {
-    ApiFactory.INSTANCE.gitHubAPI().userInfo("baiiu").enqueue(new Callback<User>() {
+
+    Call<User> userCall = ApiFactory.INSTANCE.gitHubAPI().userInfo("baiiu");
+
+    userCall.enqueue(new Callback<User>() {
       @Override public void onResponse(Call<User> call, Response<User> response) {
-        LogUtil.d(response.body().toString());
+        User body = response.body();
+        LogUtil.d(body == null ? "body == null" : body.toString());
       }
 
       @Override public void onFailure(Call<User> call, Throwable t) {
-
+        if (call.isCanceled()) {
+          LogUtil.d("the call is canceled , " + toString());
+        } else {
+          LogUtil.e(t.toString());
+        }
       }
     });
+
+    //userCall.cancel();
   }
 
   private void getWithParams() {
     ApiFactory.INSTANCE.gitHubAPI().listRepos("baiiu").enqueue(new Callback<List<Repo>>() {
       @Override public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
-        LogUtil.d(response.body().toString());
+        List<Repo> body = response.body();
+        LogUtil.d(body == null ? "body == null" : body.toString());
       }
 
       @Override public void onFailure(Call<List<Repo>> call, Throwable t) {
@@ -54,7 +69,8 @@ public class RetrofitFragment extends Fragment {
   private void post() {
     ApiFactory.INSTANCE.gitHubAPI().createUser(new User()).enqueue(new Callback<User>() {
       @Override public void onResponse(Call<User> call, Response<User> response) {
-        LogUtil.d(response.body().toString());
+        User body = response.body();
+        LogUtil.d(body == null ? "body == null" : body.toString());
       }
 
       @Override public void onFailure(Call<User> call, Throwable t) {
@@ -67,11 +83,26 @@ public class RetrofitFragment extends Fragment {
     String s = "http://gank.io/api/day/history";
     ApiFactory.INSTANCE.gitHubAPI().gankIOHistory(s).enqueue(new Callback<GankIOHistory>() {
       @Override public void onResponse(Call<GankIOHistory> call, Response<GankIOHistory> response) {
-        LogUtil.d(response.body().toString());
+        GankIOHistory body = response.body();
+        LogUtil.d(body == null ? "body == null" : body.toString());
       }
 
       @Override public void onFailure(Call<GankIOHistory> call, Throwable t) {
+        LogUtil.e("anotherUrl ," + t.toString());
+      }
+    });
+  }
 
+  private void getOneDay() {
+    String s = "http://gank.io/api/day/2015/08/07";
+    ApiFactory.INSTANCE.gitHubAPI().getOneDay(s).enqueue(new Callback<GankIODay>() {
+      @Override public void onResponse(Call<GankIODay> call, Response<GankIODay> response) {
+        GankIODay body = response.body();
+        LogUtil.d(body == null ? "body == null" : body.toString());
+      }
+
+      @Override public void onFailure(Call<GankIODay> call, Throwable t) {
+        LogUtil.e("getOneDay ," + t.toString());
       }
     });
   }
