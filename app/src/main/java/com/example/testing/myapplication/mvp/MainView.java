@@ -1,11 +1,11 @@
-package com.example.testing.myapplication;
+package com.example.testing.myapplication.mvp;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.example.testing.myapplication.mvp.IViewDelegate;
+import com.example.testing.myapplication.R;
 
 /**
  * author: baiiu
