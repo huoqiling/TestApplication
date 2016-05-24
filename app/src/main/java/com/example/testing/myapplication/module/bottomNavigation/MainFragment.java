@@ -29,12 +29,31 @@ public class MainFragment extends Fragment {
     return view;
   }
 
-  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+  @Override public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    MainTab[] values = MainTab.values();
+    viewPager.setAdapter(new MainPagerAdapter(getActivity().getSupportFragmentManager()));
+    navigation.setBottomTab(MainTab.values(), 0);
+    navigation.setTabRed(MainTab.DISCOVER, 2);
+    navigation.setOnTabSelectedListener(new BottomNavigation.OnTabSelectedListener() {
+      @Override public void onTabSelected(int position) {
+        viewPager.setCurrentItem(position);
+      }
+    });
 
-    navigation.setBottomTab(values);
+    viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+      @Override
+      public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+      }
+
+      @Override public void onPageSelected(int position) {
+        navigation.setSelection(position);
+      }
+
+      @Override public void onPageScrollStateChanged(int state) {
+
+      }
+    });
   }
 }

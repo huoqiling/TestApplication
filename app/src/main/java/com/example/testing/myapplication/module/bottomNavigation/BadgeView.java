@@ -26,7 +26,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -121,19 +120,6 @@ public class BadgeView extends TextView {
     setText(String.valueOf(count));
   }
 
-  public Integer getBadgeCount() {
-    if (getText() == null) {
-      return null;
-    }
-
-    String text = getText().toString();
-    try {
-      return Integer.parseInt(text);
-    } catch (NumberFormatException e) {
-      return null;
-    }
-  }
-
   public void setBadgeGravity(int gravity) {
     LayoutParams params = (LayoutParams) getLayoutParams();
     params.gravity = gravity;
@@ -154,42 +140,29 @@ public class BadgeView extends TextView {
     setLayoutParams(params);
   }
 
-  /*
-   * Attach the BadgeView to the target view
-   *
-   * @param target the view to attach the BadgeView
+  /**
+   * 创造Container,包裹TextView
    */
-  public void attachTo(View target) {
+  public View attachTo(View target) {
+    if (target == null) {
+      return null;
+    }
+
+    //alone self
     if (getParent() != null) {
       ((ViewGroup) getParent()).removeView(this);
     }
 
-    if (target == null) {
-      return;
-    }
+    // use a new Framelayout container for adding badge
 
-    if (target.getParent() instanceof FrameLayout) {
-      ((FrameLayout) target.getParent()).addView(this);
-    } else if (target.getParent() instanceof ViewGroup) {
-      // use a new Framelayout container for adding badge
-      ViewGroup parentContainer = (ViewGroup) target.getParent();
-      int groupIndex = parentContainer.indexOfChild(target);
-      parentContainer.removeView(target);
+    FrameLayout badgeContainer = new FrameLayout(getContext());
 
-      FrameLayout badgeContainer = new FrameLayout(getContext());
-      ViewGroup.LayoutParams parentLayoutParams = target.getLayoutParams();
+    FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, -1);
+    layoutParams.gravity = Gravity.CENTER;
+    badgeContainer.addView(target, layoutParams);
+    badgeContainer.addView(this);
 
-      badgeContainer.setLayoutParams(parentLayoutParams);
-      target.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-          ViewGroup.LayoutParams.MATCH_PARENT));
-
-      parentContainer.addView(badgeContainer, groupIndex, parentLayoutParams);
-      badgeContainer.addView(target);
-
-      badgeContainer.addView(this);
-    } else if (target.getParent() == null) {
-      Log.e(getClass().getSimpleName(), "ParentView is needed");
-    }
+    return badgeContainer;
   }
 
   /*

@@ -9,10 +9,10 @@ import com.example.testing.myapplication.R;
  */
 public enum MainTab {
 
-  PROJECT(0, "项目", R.mipmap.ic_launcher, false),
-  DISCOVER(1, "发现", R.mipmap.ic_launcher, false),
-  MESSAGE(2, "消息", R.mipmap.ic_launcher, false),
-  ME(3, "我的", R.mipmap.ic_launcher, false);
+  PROJECT(0, "项目", R.drawable.level_main_tab, false),
+  DISCOVER(1, "发现", R.drawable.level_main_tab, true),
+  MESSAGE(2, "消息", R.drawable.level_main_tab, false),
+  ME(3, "我的", R.drawable.level_main_tab, false);
 
   private int position;
   private String text;
@@ -41,4 +41,5 @@ public enum MainTab {
   public boolean isHasRedDot() {
     return hasRedDot;
   }
+
 }
