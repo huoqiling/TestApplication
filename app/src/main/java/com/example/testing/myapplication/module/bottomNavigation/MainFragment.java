@@ -35,6 +35,7 @@ public class MainFragment extends Fragment {
     viewPager.setAdapter(new MainPagerAdapter(getActivity().getSupportFragmentManager()));
     navigation.setBottomTab(MainTab.values(), 0);
     navigation.setTabRed(MainTab.DISCOVER, 2);
+    navigation.setTabRed(MainTab.ME, 2);
     navigation.setOnTabSelectedListener(new BottomNavigation.OnTabSelectedListener() {
       @Override public void onTabSelected(int position) {
         viewPager.setCurrentItem(position);

@@ -6,12 +6,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.example.testing.myapplication.util.LogUtil;
 
 /**
  * author: baiiu
@@ -53,9 +53,13 @@ public class BottomNavigation extends LinearLayout implements View.OnClickListen
   }
 
   private void generateTabs(MainTab[] mainTabs) {
-    //排序
-    SparseArray<View> viewSparseArray = new SparseArray<>();
-    for (MainTab mainTab : mainTabs) {
+    for (int i = 0; i < mainTabs.length; ++i) {
+
+      MainTab mainTab = mainTabs[i];
+
+      /*
+        create View
+       */
       TextView textView = new TextView(getContext());
       textView.setText(mainTab.getText());
       textView.setCompoundDrawablesWithIntrinsicBounds(0, mainTab.getResourceId(), 0, 0);
@@ -63,13 +67,10 @@ public class BottomNavigation extends LinearLayout implements View.OnClickListen
 
       //添加小红点
       View view = mainTab.isHasRedDot() ? new BadgeView(getContext()).attachTo(textView) : textView;
-      viewSparseArray.put(mainTab.getPosition(), view);
-    }
 
-    //添加View
-    for (int i = 0; i < viewSparseArray.size(); ++i) {
-      View view = viewSparseArray.get(i);
-
+      /*
+        add View
+       */
       view.setOnClickListener(this);
       view.setTag(i);
 
@@ -84,8 +85,18 @@ public class BottomNavigation extends LinearLayout implements View.OnClickListen
       return;
     }
 
-    ((BadgeView) ((ViewGroup) getChildAt(mainTab.getPosition())).getChildAt(1)).setBadgeCount(
-        count);
+    MainTab[] values = MainTab.values();
+    int position = 0;
+    do {
+      if (mainTab == values[position]) {
+        break;
+      }
+      position++;
+    } while (position < values.length);
+
+    LogUtil.d(position);
+
+    ((BadgeView) ((ViewGroup) getChildAt(position)).getChildAt(1)).setBadgeCount(count);
   }
 
   @Override public void onClick(View v) {

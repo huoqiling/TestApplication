@@ -9,25 +9,19 @@ import com.example.testing.myapplication.R;
  */
 public enum MainTab {
 
-  PROJECT(0, "项目", R.drawable.level_main_tab, false),
-  DISCOVER(1, "发现", R.drawable.level_main_tab, true),
-  MESSAGE(2, "消息", R.drawable.level_main_tab, false),
-  ME(3, "我的", R.drawable.level_main_tab, false);
+  PROJECT("项目", R.drawable.level_main_tab, false),
+  DISCOVER("发现", R.drawable.level_main_tab, true),
+  MESSAGE("消息", R.drawable.level_main_tab, false),
+  ME("我的", R.drawable.level_main_tab, true);
 
-  private int position;
   private String text;
   private int resourceId;
   private boolean hasRedDot;
 
-  MainTab(int position, String text, int resourceId, boolean hasRedDot) {
-    this.position = position;
+  MainTab(String text, int resourceId, boolean hasRedDot) {
     this.text = text;
     this.resourceId = resourceId;
     this.hasRedDot = hasRedDot;
-  }
-
-  public int getPosition() {
-    return position;
   }
 
   public String getText() {
