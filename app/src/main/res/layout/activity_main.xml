@@ -25,11 +25,10 @@
       android:textSize="22sp"
       />
 
-  <com.example.testing.myapplication.view.PaintStrokeView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
+  <com.example.testing.myapplication.view.Avatar
+      android:layout_width="60dp"
+      android:layout_height="60dp"
       android:layout_gravity="center"
       />
-
 
 </LinearLayout>
