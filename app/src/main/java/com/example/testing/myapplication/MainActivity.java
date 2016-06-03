@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+import com.example.testing.myapplication.module.doubleGridRecyclerView.DoubleGridRecyclerViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
 
     //getSupportFragmentManager().beginTransaction().add(new RetrofitFragment(), "retrofit").commit();
     //okHttp();
+
+    //getSupportFragmentManager().beginTransaction().add(new DoubleGridRecyclerViewFragment(), "retrofit").commit();
+
+    getSupportFragmentManager().beginTransaction()
+        .replace(android.R.id.content, new DoubleGridRecyclerViewFragment(), "mainFragemnt")
+        .commit();
+
+
   }
 
   public void onClick(View view) {
