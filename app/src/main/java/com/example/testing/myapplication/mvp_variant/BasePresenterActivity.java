@@ -1,4 +1,4 @@
-package com.example.testing.myapplication.mvp;
+package com.example.testing.myapplication.mvp_variant;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
