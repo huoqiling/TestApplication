@@ -1,22 +1,26 @@
 package com.example.testing.myapplication.mvp;
 
+import rx.subscriptions.CompositeSubscription;
+
 /**
  * Base class that implements the Presenter interface and provides a base implementation for
  * attachView() and detachView(). It also handles keeping a reference to the mvpView that
  * can be accessed from the children classes by calling getMvpView().
  */
-public class BasePresenter<T extends MvpView> implements Presenter<T> {
+public abstract class BasePresenter<T extends MvpView> implements MVPPresenter<T> {
 
     private T mMvpView;
+    protected CompositeSubscription mCompositeSubscription;
 
-    @Override
-    public void attachView(T mvpView) {
+    @Override public void attachView(T mvpView) {
         mMvpView = mvpView;
+        mCompositeSubscription = new CompositeSubscription();
     }
 
-    @Override
-    public void detachView() {
+    @Override public void detachView() {
         mMvpView = null;
+        mCompositeSubscription.unsubscribe();
+        mCompositeSubscription = null;
     }
 
     public boolean isViewAttached() {
@@ -24,6 +28,7 @@ public class BasePresenter<T extends MvpView> implements Presenter<T> {
     }
 
     public T getMvpView() {
+        checkViewAttached();
         return mMvpView;
     }
 
@@ -33,8 +38,7 @@ public class BasePresenter<T extends MvpView> implements Presenter<T> {
 
     public static class MvpViewNotAttachedException extends RuntimeException {
         public MvpViewNotAttachedException() {
-            super("Please call Presenter.attachView(MvpView) before" +
-                    " requesting data to the Presenter");
+            super("Please call Presenter.attachView(MvpView) before" + " requesting data to the Presenter");
         }
     }
 }
