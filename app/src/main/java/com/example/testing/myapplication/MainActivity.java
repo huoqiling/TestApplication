@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.random.RandomColorFragment;
+import com.example.testing.myapplication.module.tab.TabFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
                 .replace(android.R.id.content,
 
                          //new DoubleGridRecyclerViewFragment(),
-                         new RandomColorFragment(),
+                         //new RandomColorFragment(),
+                         new TabFragment(),
+
+
 
                          "mainFragemnt")
                 .commit();

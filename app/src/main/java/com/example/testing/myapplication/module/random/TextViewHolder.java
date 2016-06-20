@@ -19,6 +19,5 @@ public class TextViewHolder extends RecyclerView.ViewHolder {
         TextView textView = (TextView) itemView;
         textView.setText(String.valueOf(card.position));
         textView.setBackgroundColor(card.color);
-
     }
 }
