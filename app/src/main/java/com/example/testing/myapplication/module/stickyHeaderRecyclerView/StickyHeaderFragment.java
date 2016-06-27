@@ -30,7 +30,7 @@ public class StickyHeaderFragment extends Fragment {
         mRecyclerView.setAdapter(myAdapter);
 
 
-        final StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(myAdapter);
+        StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(myAdapter);
         mRecyclerView.addItemDecoration(headersDecor);
         mRecyclerView.addItemDecoration(new DividerDecoration(getContext()));
 
