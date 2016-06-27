@@ -2,10 +2,11 @@ package com.example.testing.myapplication;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.tab.TabFragment;
+import com.example.testing.myapplication.module.stickyHeaderRecyclerView.StickyHeaderFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,17 +24,22 @@ public class MainActivity extends AppCompatActivity {
         //getSupportFragmentManager().beginTransaction().add(new DoubleGridRecyclerViewFragment(), "retrofit").commit();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(android.R.id.content,
-
-                         //new DoubleGridRecyclerViewFragment(),
-                         //new RandomColorFragment(),
-                         new TabFragment(),
-
-
-
-                         "mainFragemnt")
+                .replace(android.R.id.content, getFragment(), "mainFragemnt")
                 .commit();
 
+    }
+
+
+    private Fragment getFragment() {
+        return
+                //new DoubleGridRecyclerViewFragment(),
+                //new RandomColorFragment(),
+                //new TabFragment(),
+
+                new StickyHeaderFragment()
+
+
+                ;
     }
 
     public void onClick(View view) {
