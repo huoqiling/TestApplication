@@ -26,7 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<SimpleTextViewHolder> {
     @Override public SimpleTextViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new SimpleTextViewHolder(mContext);
     }
-
+o
     @Override public void onBindViewHolder(SimpleTextViewHolder holder, int position) {
         holder.bind(mList.get(position));
     }
