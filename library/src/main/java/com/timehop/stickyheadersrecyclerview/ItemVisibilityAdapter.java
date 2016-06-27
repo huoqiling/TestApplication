@@ -10,12 +10,10 @@ package com.timehop.stickyheadersrecyclerview;
  *
  * To use it you must pass an instance of a class that implements this
  * interface as a second argment StickyRecyclerHeadersDecoration's constructor.
- *
  */
 public interface ItemVisibilityAdapter {
 
     /**
-     *
      * Return true the specified adapter position is visible, false otherwise
      *
      * The implementation of this method will typically return true if
