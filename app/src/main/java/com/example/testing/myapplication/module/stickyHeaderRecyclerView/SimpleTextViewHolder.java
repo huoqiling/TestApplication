@@ -3,6 +3,7 @@ package com.example.testing.myapplication.module.stickyHeaderRecyclerView;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
@@ -12,9 +13,9 @@ import android.widget.TextView;
  */
 public class SimpleTextViewHolder extends RecyclerView.ViewHolder {
 
-    public SimpleTextViewHolder(Context context) {
+    public SimpleTextViewHolder(Context context, ViewGroup parent) {
         super(LayoutInflater.from(context)
-                      .inflate(android.R.layout.simple_list_item_1, null));
+                      .inflate(android.R.layout.simple_list_item_1, parent, false));
     }
 
     public void bind(String text) {
