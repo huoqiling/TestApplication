@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.stickyHeaderRecyclerView.StickyHeaderFragment;
+import com.example.testing.myapplication.module.bottomRecyclerView.RecyclerViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 //new RandomColorFragment(),
                 //new TabFragment(),
 
-                new StickyHeaderFragment()
+                //new StickyHeaderFragment()
 
+                new RecyclerViewFragment()
 
                 ;
     }

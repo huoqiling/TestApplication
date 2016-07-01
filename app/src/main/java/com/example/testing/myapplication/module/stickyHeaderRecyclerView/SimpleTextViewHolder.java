@@ -16,6 +16,9 @@ public class SimpleTextViewHolder extends RecyclerView.ViewHolder {
     public SimpleTextViewHolder(Context context, ViewGroup parent) {
         super(LayoutInflater.from(context)
                       .inflate(android.R.layout.simple_list_item_1, parent, false));
+
+        itemView.setPadding(0, 30, 0, 30);
+
     }
 
     public void bind(String text) {
