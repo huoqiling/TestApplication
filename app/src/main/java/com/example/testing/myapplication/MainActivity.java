@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.bottomRecyclerView.RecyclerViewFragment;
+import com.example.testing.myapplication.module.loadmoreRecyclerView.RecyclerViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.testing.myapplication.module.bottomRecyclerView;
+package com.example.testing.myapplication.module.loadmoreRecyclerView;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

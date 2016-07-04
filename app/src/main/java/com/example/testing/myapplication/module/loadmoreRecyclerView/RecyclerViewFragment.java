@@ -1,4 +1,4 @@
-package com.example.testing.myapplication.module.bottomRecyclerView;
+package com.example.testing.myapplication.module.loadmoreRecyclerView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
