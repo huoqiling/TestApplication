@@ -26,7 +26,8 @@ public class RecyclerViewFragment extends Fragment implements LoadingMoreScrollL
         View view = inflater.inflate(R.layout.fragment_recyclerview, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
         mAdapter = new SimpleTextAdapter(getContext(), 20);
         recyclerView.setAdapter(mAdapter);
 
@@ -46,7 +47,6 @@ public class RecyclerViewFragment extends Fragment implements LoadingMoreScrollL
                 loadingMoreScrollListener.setLoading(true);
             }
         }, 1000);
-
     }
 
 }
