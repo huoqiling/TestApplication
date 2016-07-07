@@ -15,8 +15,6 @@ import android.view.View;
  * description:
  */
 public class FastScrollLinearLayoutManager extends LinearLayoutManager {
-    float speedRatio = 0.8F;
-
     public FastScrollLinearLayoutManager(Context context) {
         super(context);
     }
@@ -70,9 +68,9 @@ public class FastScrollLinearLayoutManager extends LinearLayoutManager {
                     减少距离.仅仅是假设距离减少,以减少滑动时间
                  */
 
-                //if (dx > 3000) {
-                //    dx = 3000;
-                //}
+                if (dx > 3000) {
+                    dx = 3000;
+                }
 
                 int i = super.calculateTimeForScrolling(dx);
 

@@ -22,7 +22,7 @@ public class FastScrollFragment extends Fragment implements View.OnClickListener
 
     private RecyclerView recyclerView;
     private SimpleTextAdapter mAdapter;
-    private int mVisibleCount_much;
+    private int mVisibleCount;
 
     @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
@@ -45,9 +45,9 @@ public class FastScrollFragment extends Fragment implements View.OnClickListener
                         LinearLayoutManager linearLayoutManager =
                                 (LinearLayoutManager) recyclerView.getLayoutManager();
 
-                        mVisibleCount_much = linearLayoutManager.findLastVisibleItemPosition()
+                        mVisibleCount = linearLayoutManager.findLastVisibleItemPosition()
                                 - linearLayoutManager.findFirstVisibleItemPosition() + 1;
-                        LogUtil.d("显示这么多个: " + mVisibleCount_much);
+                        LogUtil.d("显示这么多个: " + mVisibleCount);
                     }
                 });
 
@@ -65,20 +65,23 @@ public class FastScrollFragment extends Fragment implements View.OnClickListener
     @Override public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fast_top_zhihuway:
+                /*
+                    仿知乎,先直接到一个位置,然后再滑动到顶部
+                 */
                 LinearLayoutManager linearLayoutManager =
                         (LinearLayoutManager) recyclerView.getLayoutManager();
-
                 int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
 
-                if (firstVisibleItemPosition < mVisibleCount_much) {
-                    recyclerView.smoothScrollToPosition(0);
-                } else {
-                    LogUtil.d(firstVisibleItemPosition);
-                    recyclerView.scrollToPosition(mVisibleCount_much);
-                    recyclerView.smoothScrollToPosition(0);
+                if (firstVisibleItemPosition > mVisibleCount) {
+                    recyclerView.scrollToPosition(mVisibleCount);
                 }
+                recyclerView.smoothScrollToPosition(0);
 
                 break;
+
+            /*
+                这两个都是在LinearSmoothScroller里缩短了单位时间距离以达到减少时间,快速滑动
+             */
             case R.id.fast_top:
                 recyclerView.smoothScrollToPosition(10000);
                 break;
