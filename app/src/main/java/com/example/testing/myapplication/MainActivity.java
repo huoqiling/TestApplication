@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
                 new FastScrollFragment()
 
+                //new AnimatorFragment()
+
 
                 ;
     }

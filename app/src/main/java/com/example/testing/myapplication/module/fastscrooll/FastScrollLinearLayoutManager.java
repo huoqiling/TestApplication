@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.example.testing.myapplication.util.LogUtil;
 
 /**
  * author: baiiu
@@ -16,6 +15,8 @@ import com.example.testing.myapplication.util.LogUtil;
  * description:
  */
 public class FastScrollLinearLayoutManager extends LinearLayoutManager {
+    float speedRatio = 0.8F;
+
     public FastScrollLinearLayoutManager(Context context) {
         super(context);
     }
@@ -40,9 +41,18 @@ public class FastScrollLinearLayoutManager extends LinearLayoutManager {
 
             @Override protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
                 //if returned value is 2 ms, it means scrolling 1000 pixels with LinearInterpolation should take 2 seconds.
-                float v = super.calculateSpeedPerPixel(displayMetrics);
 
-                LogUtil.d("calculateSpeedPerPixel: " + v);
+                float v = super.calculateSpeedPerPixel(displayMetrics);
+                //v = 10F / displayMetrics.densityDpi;
+                //LogUtil.d("滑动1像素毫秒数: " + v);
+
+                /*
+                    1个像素要25ms,可用减少
+
+                    float v = super.calculateSpeedPerPixel(displayMetrics);
+                    return MILLISECONDS_PER_INCH / displayMetrics.densityDpi
+                 */
+
 
                 return v;
             }
@@ -57,26 +67,19 @@ public class FastScrollLinearLayoutManager extends LinearLayoutManager {
                 /*
                     很明显,要想滑动快点,即控制此处返回时间:
 
-                    一是减少距离
-                    二是加快速度
+                    减少距离.仅仅是假设距离减少,以减少滑动时间
                  */
 
-                //1.减少距离.仅仅是假设距离减少,以减少滑动时间
                 //if (dx > 3000) {
                 //    dx = 3000;
                 //}
 
                 int i = super.calculateTimeForScrolling(dx);
 
-                LogUtil.d(i + ", " + dx);
+                //LogUtil.d(i + ", " + dx);
 
                 return i;
             }
-
-            @Override protected int calculateTimeForDeceleration(int dx) {
-                return super.calculateTimeForDeceleration(dx);
-            }
-
 
             @Override public int calculateDyToMakeVisible(View view, int snapPreference) {
                 //Calculates the vertical scroll amount necessary to make the given view fully visible inside the RecyclerView.
@@ -115,7 +118,7 @@ public class FastScrollLinearLayoutManager extends LinearLayoutManager {
                 // position in the layout.
                 //SmoothScroller should check dx, dy and if scroll should be changed, update the provided
                 // RecyclerView.SmoothScroller.Action to define the next scroll.
-                LogUtil.d(dx + ", " + dy + ", " + state + ", " + action);
+                //LogUtil.d(dx + ", " + dy + ", " + state + ", " + action);
                 super.onSeekTargetStep(dx, dy, state, action);
             }
         };

@@ -6,20 +6,30 @@
     android:orientation="vertical"
     >
 
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fast_top_zhihuway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:layout_margin="5dp"
+        android:src="@android:drawable/btn_star"
+        />
+
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fast_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|top"
         android:layout_margin="5dp"
-        android:src="@android:drawable/ic_dialog_email"
-        />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:src="@android:drawable/stat_sys_download"
         />
 
 
@@ -29,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"
         android:layout_margin="5dp"
-        android:src="@android:drawable/btn_star"
+        android:src="@android:drawable/stat_sys_upload"
         />
 
 
