@@ -1,4 +1,4 @@
-package com.example.testing.myapplication.module.animator;
+package com.example.testing.myapplication.module.valueAnimator;
 
 import android.animation.TypeEvaluator;
 import com.example.testing.myapplication.util.LogUtil;

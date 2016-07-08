@@ -1,4 +1,4 @@
-package com.example.testing.myapplication.module.animator;
+package com.example.testing.myapplication.module.valueAnimator;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;

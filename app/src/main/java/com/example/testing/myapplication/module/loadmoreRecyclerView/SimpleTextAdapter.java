@@ -25,7 +25,7 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextViewHolder
     }
 
     @Override public void onBindViewHolder(SimpleTextViewHolder holder, int position) {
-        holder.bind("position: " + position);
+        holder.bind(position);
     }
 
     @Override public int getItemCount() {
@@ -33,9 +33,18 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextViewHolder
     }
 
     public void setCount(int mCount) {
+        notifyItemRangeInserted(this.mCount, 20);
         this.mCount = mCount;
-        notifyDataSetChanged();
     }
 
+    public void addOne(int position) {
+        notifyItemInserted(position);
+        ++this.mCount;
+    }
+
+    public void deleteOne(int position) {
+        notifyItemRemoved(position);
+        --this.mCount;
+    }
 
 }

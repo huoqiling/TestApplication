@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.fastscrooll.FastScrollFragment;
+import com.example.testing.myapplication.module.itemAnimator.ItemAnimatorFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
                 //new StickyHeaderFragment()
                 //new RecyclerViewFragment()
 
-                new FastScrollFragment()
+                //new FastScrollFragment()
 
                 //new AnimatorFragment()
+
+
+                new ItemAnimatorFragment()
 
 
                 ;

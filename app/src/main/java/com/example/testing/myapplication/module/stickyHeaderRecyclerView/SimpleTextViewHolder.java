@@ -17,8 +17,20 @@ public class SimpleTextViewHolder extends RecyclerView.ViewHolder {
         super(LayoutInflater.from(context)
                       .inflate(android.R.layout.simple_list_item_1, parent, false));
 
-        itemView.setPadding(0, 30, 0, 30);
+        itemView.setPadding(0, 100, 0, 100);
 
+    }
+
+    public void bind(int position) {
+
+        ((TextView) itemView).setText("position: " + String.valueOf(position));
+
+
+        if (position % 2 == 0) {
+            itemView.setBackgroundResource(android.R.color.darker_gray);
+        } else {
+            itemView.setBackgroundResource(android.R.color.background_light);
+        }
     }
 
     public void bind(String text) {
