@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.testing.myapplication.R;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
 /**
  * author: baiiu
@@ -30,9 +29,9 @@ public class StickyHeaderFragment extends Fragment {
         mRecyclerView.setAdapter(myAdapter);
 
 
-        StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(myAdapter);
-        mRecyclerView.addItemDecoration(headersDecor);
-        mRecyclerView.addItemDecoration(new DividerDecoration(getContext()));
+        //StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(myAdapter);
+        //mRecyclerView.addItemDecoration(headersDecor);
+        //mRecyclerView.addItemDecoration(new DividerDecoration(getContext()));
 
         return view;
     }
