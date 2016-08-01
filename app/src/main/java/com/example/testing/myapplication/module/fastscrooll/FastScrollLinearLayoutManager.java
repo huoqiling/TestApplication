@@ -98,6 +98,7 @@ public class FastScrollLinearLayoutManager extends LinearLayoutManager {
             }
 
 
+
             @Override
             protected void onTargetFound(View targetView, RecyclerView.State state, Action action) {
                 //Called when the target position is laid out.
@@ -119,6 +120,7 @@ public class FastScrollLinearLayoutManager extends LinearLayoutManager {
                 //LogUtil.d(dx + ", " + dy + ", " + state + ", " + action);
                 super.onSeekTargetStep(dx, dy, state, action);
             }
+
         };
 
         linearSmoothScroller.setTargetPosition(position);

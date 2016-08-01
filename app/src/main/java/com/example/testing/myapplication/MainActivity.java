@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.itemAnimator.ItemAnimatorFragment;
+import com.example.testing.myapplication.module.ptrPage.PtrPageFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,8 +43,11 @@ public class MainActivity extends AppCompatActivity {
                 //new AnimatorFragment()
 
 
-                new ItemAnimatorFragment()
+                //new ItemAnimatorFragment()
 
+                //new GsonDeepLearnFragment()
+
+                new PtrPageFragment()
 
                 ;
     }
