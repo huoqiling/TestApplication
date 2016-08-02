@@ -1,4 +1,4 @@
-package com.example.testing.myapplication.module.ptrPage;
+package com.example.testing.myapplication.module.ultraPtrPage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,7 +19,6 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * description:
  */
 public class PtrPageFragment extends Fragment {
-
 
     private PtrClassicFrameLayout ptr;
     private TextView textView;

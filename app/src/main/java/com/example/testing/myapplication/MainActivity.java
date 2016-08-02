@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.ptrPage.PtrPageFragment;
+import com.example.testing.myapplication.module.ultraPtrPage.PtrPageFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //new ItemAnimatorFragment()
-
                 //new GsonDeepLearnFragment()
 
                 new PtrPageFragment()
