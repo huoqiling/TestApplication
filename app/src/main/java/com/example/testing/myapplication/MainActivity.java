@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.badgeView.BadgeViewFragment;
+import com.example.testing.myapplication.module.AAtest.TestFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,7 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
                 //new PtrPageFragment()
 
-                new BadgeViewFragment()
+                //new BadgeViewFragment()
+
+                //new ServiceFragment()
+
+
+                //new CustomViewFragment()
+
+
+                new TestFragment()
 
                 ;
     }

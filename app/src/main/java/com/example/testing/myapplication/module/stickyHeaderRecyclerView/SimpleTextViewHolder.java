@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.example.testing.myapplication.R;
 
 /**
  * author: baiiu
@@ -13,18 +14,19 @@ import android.widget.TextView;
  */
 public class SimpleTextViewHolder extends RecyclerView.ViewHolder {
 
+    private final TextView textView;
+
     public SimpleTextViewHolder(Context context, ViewGroup parent) {
         super(LayoutInflater.from(context)
-                      .inflate(android.R.layout.simple_list_item_1, parent, false));
+                      .inflate(R.layout.holder_simple, parent, false));
 
         itemView.setPadding(0, 100, 0, 100);
-
+        textView = (TextView) itemView.findViewById(android.R.id.text1);
     }
 
     public void bind(int position) {
 
-        ((TextView) itemView).setText("position: " + String.valueOf(position));
-
+        textView.setText("position: " + String.valueOf(position));
 
         if (position % 2 == 0) {
             itemView.setBackgroundResource(android.R.color.darker_gray);

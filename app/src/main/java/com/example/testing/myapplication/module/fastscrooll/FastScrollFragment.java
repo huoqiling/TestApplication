@@ -1,5 +1,6 @@
 package com.example.testing.myapplication.module.fastscrooll;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,6 +30,7 @@ public class FastScrollFragment extends Fragment implements View.OnClickListener
         View view = inflater.inflate(R.layout.fragment_fastscroll, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setBackgroundColor(Color.BLUE);
 
         LinearLayoutManager linearLayoutManager = new FastScrollLinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -42,8 +44,7 @@ public class FastScrollFragment extends Fragment implements View.OnClickListener
                         recyclerView.getViewTreeObserver()
                                 .removeGlobalOnLayoutListener(this);
 
-                        LinearLayoutManager linearLayoutManager =
-                                (LinearLayoutManager) recyclerView.getLayoutManager();
+                        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
 
                         mVisibleCount = linearLayoutManager.findLastVisibleItemPosition()
                                 - linearLayoutManager.findFirstVisibleItemPosition() + 1;
@@ -68,8 +69,7 @@ public class FastScrollFragment extends Fragment implements View.OnClickListener
                 /*
                     仿知乎,先直接到一个位置,然后再滑动到顶部
                  */
-                LinearLayoutManager linearLayoutManager =
-                        (LinearLayoutManager) recyclerView.getLayoutManager();
+                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
 
                 if (firstVisibleItemPosition > mVisibleCount) {
