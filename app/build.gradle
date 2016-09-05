@@ -28,6 +28,7 @@ dependencies {
     //lib
     //  compile project(':StickyHeaderRecyclerView')
     compile project(':ptr-lib')
+    compile project(':keyBoardPanelSwitch')
 
     //stetho
     compile 'com.facebook.stetho:stetho:1.3.1'

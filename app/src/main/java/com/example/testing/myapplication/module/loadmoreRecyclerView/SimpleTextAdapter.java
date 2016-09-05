@@ -47,4 +47,5 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextViewHolder
         --this.mCount;
     }
 
+
 }

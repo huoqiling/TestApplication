@@ -1,3 +1,4 @@
 include ':app'
 //include ':StickyHeaderRecyclerView'
 include ':ptr-lib'
+include ':keyBoardPanelSwitch'
