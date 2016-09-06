@@ -5,11 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
@@ -20,50 +19,44 @@ import com.example.testing.myapplication.module.loadmoreRecyclerView.SimpleTextA
 import com.example.testing.myapplication.util.LogUtil;
 
 public class KeyBoardActivity extends AppCompatActivity {
-    private RecyclerView mContentRyv;
-    private EditText mSendEdt;
+    private RecyclerView mRecyclerView;
+    private EditText mEditText;
     private KPSwitchPanelLinearLayout mPanelRoot;
-    private TextView mSendImgTv;
+    private TextView mPanelItem;
     private ImageView mPlusIv;
     private SimpleTextAdapter mAdapter;
+    private ListView mListView;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_key_board);
 
-        mContentRyv = (RecyclerView) findViewById(R.id.content_ryv);
-        mSendEdt = (EditText) findViewById(R.id.send_edt);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mEditText = (EditText) findViewById(R.id.send_edt);
         mPanelRoot = (KPSwitchPanelLinearLayout) findViewById(R.id.panel_root);
-        mSendImgTv = (TextView) findViewById(R.id.send_img_tv);
+        mPanelItem = (TextView) findViewById(R.id.send_img_tv);
         mPlusIv = (ImageView) findViewById(R.id.plus_iv);
-
-        mContentRyv.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new SimpleTextAdapter(this, 20);
-        mContentRyv.setAdapter(mAdapter);
-        scrollToLast();
-
+        mListView = (ListView) findViewById(R.id.listView);
         initKeyBoard();
 
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new SimpleTextAdapter(this, 20);
+        mRecyclerView.setAdapter(mAdapter);
+        mListView.setAdapter(new TextAdapter(this));
 
-
-        mContentRyv.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override public void onGlobalLayout() {
-
-            }
-        });
+        scrollToLast();
     }
 
     public void scrollToLast() {
-        mContentRyv.scrollToPosition(mAdapter.getItemCount() - 1);
+        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
     }
 
     public void hidePanelAndKeyboard() {
-        mContentRyv.postDelayed(new Runnable() {
+        mRecyclerView.postDelayed(new Runnable() {
             @Override public void run() {
                 KPSwitchConflictUtil.hidePanelAndKeyboard(mPanelRoot);
             }
         }, 100);
-
     }
 
     private void initKeyBoard() {
@@ -78,34 +71,47 @@ public class KeyBoardActivity extends AppCompatActivity {
                             });
 
 
-        KPSwitchConflictUtil.attach(mPanelRoot, mPlusIv, mSendEdt, new KPSwitchConflictUtil.SwitchClickListener() {
+        KPSwitchConflictUtil.attach(mPanelRoot, mPlusIv, mEditText, new KPSwitchConflictUtil.SwitchClickListener() {
             @Override public void onClickSwitch(boolean switchToPanel) {
                 if (switchToPanel) {
-                    mSendEdt.clearFocus();
+                    //show Panel Layout
+                    mEditText.clearFocus();
                     scrollToLast();
                 } else {
-                    mSendEdt.requestFocus();
+                    mEditText.requestFocus();
                 }
             }
         });
 
-        mSendImgTv.setOnClickListener(new View.OnClickListener() {
+        mPanelItem.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 Toast.makeText(KeyBoardActivity.this, "发送", Toast.LENGTH_SHORT)
                         .show();
+
+                mListView.setVisibility(View.VISIBLE);
+
             }
         });
 
 
-        mContentRyv.setOnTouchListener(new View.OnTouchListener() {
-            @Override public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
                     hidePanelAndKeyboard();
                 }
-
-                return false;
             }
         });
+
+        //mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
+        //    @Override public boolean onTouch(View view, MotionEvent motionEvent) {
+        //        if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+        //            hidePanelAndKeyboard();
+        //        }
+        //
+        //        return false;
+        //    }
+        //});
     }
 
     @Override public boolean dispatchKeyEvent(KeyEvent event) {

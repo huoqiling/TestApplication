@@ -7,7 +7,7 @@
     >
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/content_ryv"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
@@ -18,8 +18,11 @@
 
     <cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout
         android:id="@+id/panel_root"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#fffefefe"
+        android:orientation="vertical"
         android:visibility="gone"
-        style="@style/Panel"
         >
         <include layout="@layout/merge_panel_content"/>
     </cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout>

@@ -39,9 +39,7 @@ import cn.dreamtobe.kpswitch.handler.KPSwitchPanelLayoutHandler;
  * @see KPSwitchPanelRelativeLayout
  * @see KPSwitchPanelLayoutHandler
  */
-public class KPSwitchPanelLinearLayout extends LinearLayout implements IPanelHeightTarget,
-        IPanelConflictLayout {
-
+public class KPSwitchPanelLinearLayout extends LinearLayout implements IPanelHeightTarget, IPanelConflictLayout {
 
     private KPSwitchPanelLayoutHandler panelLayoutHandler;
 
@@ -65,56 +63,46 @@ public class KPSwitchPanelLinearLayout extends LinearLayout implements IPanelHei
         panelLayoutHandler = new KPSwitchPanelLayoutHandler(this, attrs);
     }
 
-    @Override
-    public void refreshHeight(int panelHeight) {
+    @Override public void refreshHeight(int panelHeight) {
         panelLayoutHandler.resetToRecommendPanelHeight(panelHeight);
     }
 
-    @Override
-    public void onKeyboardShowing(boolean showing) {
+    @Override public void onKeyboardShowing(boolean showing) {
         panelLayoutHandler.setIsKeyboardShowing(showing);
     }
 
-    @Override
-    public boolean isKeyboardShowing() {
+    @Override public boolean isKeyboardShowing() {
         return panelLayoutHandler.isKeyboardShowing();
     }
 
-    @Override
-    public void setVisibility(int visibility) {
+    @Override public void setVisibility(int visibility) {
         if (panelLayoutHandler.filterSetVisibility(visibility)) {
             return;
         }
         super.setVisibility(visibility);
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        final int[] processedMeasureWHSpec = panelLayoutHandler.processOnMeasure(widthMeasureSpec,
-                heightMeasureSpec);
+    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        final int[] processedMeasureWHSpec = panelLayoutHandler.processOnMeasure(widthMeasureSpec, heightMeasureSpec);
 
         super.onMeasure(processedMeasureWHSpec[0], processedMeasureWHSpec[1]);
     }
 
-    @Override
-    public boolean isVisible() {
+    @Override public boolean isVisible() {
         return panelLayoutHandler.isVisible();
     }
 
 
-    @Override
-    public void handleShow() {
+    @Override public void handleShow() {
         super.setVisibility(View.VISIBLE);
     }
 
 
-    @Override
-    public void handleHide() {
+    @Override public void handleHide() {
         panelLayoutHandler.handleHide();
     }
 
-    @Override
-    public void setIgnoreRecommendHeight(boolean isIgnoreRecommendHeight) {
+    @Override public void setIgnoreRecommendHeight(boolean isIgnoreRecommendHeight) {
         panelLayoutHandler.setIgnoreRecommendHeight(isIgnoreRecommendHeight);
     }
 

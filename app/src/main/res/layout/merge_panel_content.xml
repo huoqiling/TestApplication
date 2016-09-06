@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/panel_content"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="10dp"
         >
@@ -29,5 +29,14 @@
             android:text="位置"
             style="@style/PanelItem"
             />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+
+
     </LinearLayout>
 </merge>
