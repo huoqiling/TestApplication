@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 import com.example.testing.myapplication.module.AAtest.TestFragment;
+import com.example.testing.myapplication.module.dialogFragmentSth.PromptDialogFragment;
 import com.example.testing.myapplication.module.keyBoard.KeyBoardActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(android.R.id.content, getFragment(), "mainFragemnt")
                 .commit();
+
+
+        PromptDialogFragment promptDialogFragment = new PromptDialogFragment();
+
+        getSupportFragmentManager().beginTransaction()
+                .add(promptDialogFragment, "prompt")
+                .commitAllowingStateLoss();
 
     }
 

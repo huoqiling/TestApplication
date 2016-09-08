@@ -34,6 +34,12 @@ public class KeyBoardActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mEditText = (EditText) findViewById(R.id.send_edt);
         mPanelRoot = (KPSwitchPanelLinearLayout) findViewById(R.id.panel_root);
+        //适配高度
+        mPanelRoot.setIgnoreRecommendHeight(true);
+
+
+
+
         mPanelItem = (TextView) findViewById(R.id.send_img_tv);
         mPlusIv = (ImageView) findViewById(R.id.plus_iv);
         mListView = (ListView) findViewById(R.id.listView);
@@ -43,6 +49,9 @@ public class KeyBoardActivity extends AppCompatActivity {
         mAdapter = new SimpleTextAdapter(this, 20);
         mRecyclerView.setAdapter(mAdapter);
         mListView.setAdapter(new TextAdapter(this));
+
+
+
 
         scrollToLast();
     }
