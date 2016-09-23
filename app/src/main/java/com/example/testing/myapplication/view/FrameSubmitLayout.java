@@ -13,9 +13,7 @@ import android.widget.TextView;
  * date: on 16/9/23 11:53
  * description:
  */
-
 public class FrameSubmitLayout extends FrameLayout {
-    private TextView mTextView;
 
     public FrameSubmitLayout(Context context) {
         super(context);
@@ -36,19 +34,15 @@ public class FrameSubmitLayout extends FrameLayout {
 
     @Override protected void onFinishInflate() {
         super.onFinishInflate();
-        mTextView = (TextView) getChildAt(0);
-    }
-
-    @Override protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-
-        View view = getChildAt(1);
-        int textWidth = (int) mTextView.getPaint()
-                .measureText(mTextView.getText()
+        TextView textView = (TextView) getChildAt(0);
+        int left = (int) textView.getPaint()
+                .measureText(textView.getText()
                                      .toString());
-        LayoutParams layoutParams = (LayoutParams) view.getLayoutParams();
-        layoutParams.leftMargin = textWidth + mTextView.getPaddingLeft() + 20;
-        view.setLayoutParams(layoutParams);
+
+        View child = getChildAt(1);
+        MarginLayoutParams layoutParams = (MarginLayoutParams) child.getLayoutParams();
+        layoutParams.leftMargin = left + textView.getPaddingLeft() + 20;
+        child.setLayoutParams(layoutParams);
     }
 
 }
