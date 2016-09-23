@@ -15,7 +15,7 @@ import android.widget.TextView;
  * description:
  */
 
-public class UnderLineTgextView extends TextView {
+public class UnderLineTextView extends TextView {
 
     private Paint mPaint;
 

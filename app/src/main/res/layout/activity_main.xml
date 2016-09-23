@@ -24,6 +24,40 @@
         android:textSize="22sp"
         />
 
+
+    <com.example.testing.myapplication.view.FrameSubmitLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="0dp"
+            android:drawableEnd="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="项目名称"
+            android:textColor="#123456"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="65dp"
+            android:singleLine="true"
+            android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+            />
+
+    </com.example.testing.myapplication.view.FrameSubmitLayout>
+
     <!--<com.example.testing.myapplication.view.Avatar-->
     <!--android:layout_width="60dp"-->
     <!--android:layout_height="60dp"-->
