@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import com.example.testing.myapplication.module.AAtest.TestFragment;
+import com.example.testing.myapplication.module.highLight.HighLightFragment;
 import com.example.testing.myapplication.module.keyBoard.KeyBoardActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,11 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         //getSupportFragmentManager().beginTransaction().add(new DoubleGridRecyclerViewFragment(), "retrofit").commit();
 
-        //getSupportFragmentManager().beginTransaction()
-        //        .replace(android.R.id.content, getFragment(), "mainFragemnt")
-        //        .commit();
-        //
-        //
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, getFragment(), "mainFragemnt")
+                .commit();
+
         //PromptDialogFragment promptDialogFragment = new PromptDialogFragment();
         //
         //getSupportFragmentManager().beginTransaction()
@@ -65,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 //new CustomViewFragment()
 
 
-                new TestFragment()
+                //new TestFragment()
+
+                new HighLightFragment()
 
                 ;
     }
