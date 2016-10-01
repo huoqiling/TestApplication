@@ -1,14 +1,10 @@
 package com.example.testing.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
-import com.example.testing.myapplication.module.highLight.HighLightFragment;
-import com.example.testing.myapplication.module.keyBoard.KeyBoardActivity;
+import com.example.testing.myapplication.module.glide.GlideFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,16 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
                 //new TestFragment()
 
-                new HighLightFragment()
+                //new HighLightFragment()
+
+                new GlideFragment()
 
                 ;
-    }
-
-    public void onClick(View view) {
-        Toast.makeText(this, "点击了", Toast.LENGTH_SHORT)
-                .show();
-
-        startActivity(new Intent(this, KeyBoardActivity.class));
     }
 
     private void okHttp() {

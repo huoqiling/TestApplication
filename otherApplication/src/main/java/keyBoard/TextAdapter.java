@@ -1,4 +1,4 @@
-package com.example.testing.myapplication.module.keyBoard;
+package keyBoard;
 
 import android.content.Context;
 import android.view.View;

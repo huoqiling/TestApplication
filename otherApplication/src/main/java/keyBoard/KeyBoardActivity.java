@@ -1,4 +1,4 @@
-package com.example.testing.myapplication.module.keyBoard;
+package keyBoard;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,9 +14,8 @@ import android.widget.Toast;
 import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
 import cn.dreamtobe.kpswitch.util.KeyboardUtil;
 import cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout;
-import com.example.testing.myapplication.R;
-import com.example.testing.myapplication.module.loadmoreRecyclerView.SimpleTextAdapter;
-import com.example.testing.myapplication.util.LogUtil;
+import com.baiiu.ptr.R;
+import util.LogUtil;
 
 public class KeyBoardActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
