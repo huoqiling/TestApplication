@@ -7,11 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import com.example.testing.myapplication.R;
 import com.example.testing.myapplication.util.LogUtil;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * author: baiiu
@@ -25,6 +29,7 @@ public class TestFragment extends Fragment {
 
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        test();
     }
 
     @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -32,9 +37,9 @@ public class TestFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_test, container, false);
         TextView textView = (TextView) view.findViewById(R.id.textView);
 
-        LogUtil.d("" + (textView.getText()
-                .toString()
-                .trim() == null));
+
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.right_out);
+        textView.startAnimation(animation);
 
         return view;
     }
@@ -57,5 +62,20 @@ public class TestFragment extends Fragment {
                 LogUtil.d(toList.toString() + ", " + list.toString());
             }
         }, 1000);
+
+
+        HashMap<String, List<String>> map = new HashMap<>();
+        List<String> list = new ArrayList<>();
+        list.add("哈哈哈");
+        list.add("呵呵呵");
+        map.put("key", list);
+        LogUtil.d(map.toString());
+
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("bundle", map);
+
+        StringUtils.join(list, ",");
+
     }
 }

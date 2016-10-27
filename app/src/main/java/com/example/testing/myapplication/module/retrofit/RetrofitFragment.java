@@ -9,6 +9,7 @@ import com.example.testing.myapplication.bean.Repo;
 import com.example.testing.myapplication.bean.User;
 import com.example.testing.myapplication.retrofit.http.ApiFactory;
 import com.example.testing.myapplication.util.LogUtil;
+import java.util.HashMap;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,18 +24,24 @@ public class RetrofitFragment extends Fragment {
 
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //normalGet();
+        normalGet();
         //getWithParams();
         //post();
 
-        anotherUrl();
-        getOneDay();
+        //anotherUrl();
+        //getOneDay();
     }
 
     private void normalGet() {
+        HashMap<String, String> map = new HashMap<>();
+        //map.put("key", "呵呵呵");
+        //map.put("key1", "呵呵呵");
+        //map.put("key2", "呵呵呵");
+        //map.put("key3", "呵呵呵");
+        //LogUtil.d(map.toString());
 
         Call<User> userCall = ApiFactory.INSTANCE.gitHubAPI()
-                .userInfo("baiiu");
+                .userInfo("baiiu", map);
 
         userCall.enqueue(new Callback<User>() {
             @Override public void onResponse(Call<User> call, Response<User> response) {
@@ -89,8 +96,7 @@ public class RetrofitFragment extends Fragment {
         ApiFactory.INSTANCE.gitHubAPI()
                 .gankIOHistory(s)
                 .enqueue(new Callback<GankIOHistory>() {
-                    @Override
-                    public void onResponse(Call<GankIOHistory> call, Response<GankIOHistory> response) {
+                    @Override public void onResponse(Call<GankIOHistory> call, Response<GankIOHistory> response) {
                         GankIOHistory body = response.body();
                         LogUtil.d(body == null ? "body == null" : body.toString());
                     }

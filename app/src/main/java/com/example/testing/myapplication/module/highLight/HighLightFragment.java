@@ -2,6 +2,7 @@ package com.example.testing.myapplication.module.highLight;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,8 +22,10 @@ import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import com.example.testing.myapplication.R;
+import com.example.testing.myapplication.util.LogUtil;
 
 /**
  * auther: baiiu
@@ -34,11 +37,18 @@ public class HighLightFragment extends Fragment {
 
     private String string05;
 
+    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        LogUtil.d("onActivityCreated");
+    }
+
     @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_highlight, container, false);
+        LogUtil.d("onCreateView");
 
-        TextView textView01 = (TextView) view.findViewById(R.id.text01);
+        final View view = inflater.inflate(R.layout.fragment_highlight, container, false);
+
+        final TextView textView01 = (TextView) view.findViewById(R.id.text01);
         TextView textView02 = (TextView) view.findViewById(R.id.text02);
         TextView textView03 = (TextView) view.findViewById(R.id.text03);
         TextView textView04 = (TextView) view.findViewById(R.id.text04);
@@ -66,6 +76,26 @@ public class HighLightFragment extends Fragment {
         SuperscriptAndSubscriptSpanSpan(textView07);
 
         textView05.postDelayed(runnable, 150);
+
+        textView05.postDelayed(new Runnable() {
+            @Override public void run() {
+                textView01.getViewTreeObserver()
+                        .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                            @Override public void onGlobalLayout() {
+                                if (Build.VERSION.SDK_INT >= 16) {
+                                    textView01.getViewTreeObserver()
+                                            .removeOnGlobalLayoutListener(this);
+                                } else {
+                                    textView01.getViewTreeObserver()
+                                            .removeGlobalOnLayoutListener(this);
+                                }
+
+                                LogUtil.d("执行了么、、、、");
+                            }
+                        });
+
+            }
+        }, 5000);
 
         return view;
     }

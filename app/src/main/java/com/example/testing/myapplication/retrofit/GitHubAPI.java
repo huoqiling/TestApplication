@@ -43,7 +43,7 @@ public interface GitHubAPI {
     普通的
     https://api.github.com/users/baiiu
    */
-  @GET("users/{user}") Call<User> userInfo(@Path("user") String user);
+  @GET("users/{user}") Call<User> userInfo(@Path("user") String user,@QueryMap Map<String,String> map);
 
   /*
     带路径参数

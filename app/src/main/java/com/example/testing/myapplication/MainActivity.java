@@ -4,7 +4,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import com.example.testing.myapplication.module.glide.GlideFragment;
+import android.text.Html;
+import android.text.Spanned;
+import android.widget.TextView;
+import com.example.testing.myapplication.bean.Sign;
+import com.example.testing.myapplication.module.AAtest.TestFragment;
+import com.example.testing.myapplication.util.LogUtil;
+import com.example.testing.myapplication.view.CompanyTagsLinearViewGroup;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,18 +20,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        TextView tv_test = (TextView) findViewById(R.id.tv_test);
+
+        String s = "<font colot='#FF969FA9' size='1000'>哈哈哈哈</font>"
+                + " <font color='#FF5a626d'><strong>"
+                + "6666"
+                + "</strong></font> "
+                + "<font "
+                + "colot='#FF969FA9'>哈哈哈哈</font>";
+        Spanned spanned = Html.fromHtml(s);
+        tv_test.setText(spanned);
+
+        CompanyTagsLinearViewGroup viewGroup = (CompanyTagsLinearViewGroup) findViewById(R.id.nameTagsLinearViewGroup);
+
+        List<Sign> list = new ArrayList<>();
+        for (int i = 0; i < 3; ++i) {
+            list.add(new Sign("#123456", "哈哈" + i));
+        }
+        LogUtil.d(list.size());
+
+        String name = "你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好";
+        viewGroup.setListSigns(name, list);
+
+
+        //getSupportFragmentManager().beginTransaction()
+        //        .replace(android.R.id.content, getFragment(), "mainFragemnt")
+        //        .commit();
+
+
         //getSupportFragmentManager().beginTransaction()
         //    .add(android.R.id.content, new MainFragment(), "mainFragemnt")
         //    .commit();
 
-        //getSupportFragmentManager().beginTransaction().add(new RetrofitFragment(), "retrofit").commit();
+        //getSupportFragmentManager().beginTransaction()
+        //        .add(new RetrofitFragment(), "retrofit")
+        //        .commit();
         //okHttp();
 
         //getSupportFragmentManager().beginTransaction().add(new DoubleGridRecyclerViewFragment(), "retrofit").commit();
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(android.R.id.content, getFragment(), "mainFragemnt")
-                .commit();
 
         //PromptDialogFragment promptDialogFragment = new PromptDialogFragment();
         //
@@ -60,11 +96,9 @@ public class MainActivity extends AppCompatActivity {
                 //new CustomViewFragment()
 
 
-                //new TestFragment()
+                new TestFragment()
 
                 //new HighLightFragment()
-
-                new GlideFragment()
 
                 ;
     }
