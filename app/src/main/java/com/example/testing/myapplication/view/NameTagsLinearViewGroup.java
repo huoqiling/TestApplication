@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.example.testing.myapplication.R;
 import com.example.testing.myapplication.bean.Sign;
 import com.example.testing.myapplication.util.CommonUtil;
-import com.example.testing.myapplication.util.LogUtil;
 import java.util.List;
 
 /**
@@ -66,7 +65,7 @@ public class NameTagsLinearViewGroup extends ViewGroup {
             float measureText = textView.getPaint()
                     .measureText("哈哈哈哈哈哈哈哈" + new String(chars));
 
-            LogUtil.d("measureText: " + measureText);
+            //LogUtil.d("measureText: " + measureText);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-2, -2);
             params.rightMargin = 9;
@@ -101,7 +100,7 @@ public class NameTagsLinearViewGroup extends ViewGroup {
                 params.leftMargin = 15;
                 addView(textView, params);
             } catch (Exception e) {
-                LogUtil.e(e.toString());
+                //LogUtil.e(e.toString());
             }
         }
     }
@@ -159,8 +158,8 @@ public class NameTagsLinearViewGroup extends ViewGroup {
             }
         }
 
-        LogUtil.d(
-                widthSize + ", " + childTotalWidth + ", " + heightSize + ", " + childMaxHeight + ", " + tagsTotalWidth);
+        //LogUtil.d(
+        //        widthSize + ", " + childTotalWidth + ", " + heightSize + ", " + childMaxHeight + ", " + tagsTotalWidth);
 
         setMeasuredDimension(
 
@@ -198,7 +197,7 @@ public class NameTagsLinearViewGroup extends ViewGroup {
 
             int nextNodeToLeft = child.getMeasuredWidth();
 
-            LogUtil.d(childLeft + ", " + nextNodeToLeft + ", " + parentCanUsedWidth);
+            //LogUtil.d(childLeft + ", " + nextNodeToLeft + ", " + parentCanUsedWidth);
 
             if (childLeft + nextNodeToLeft > parentCanUsedWidth) {
                 break;
@@ -209,7 +208,7 @@ public class NameTagsLinearViewGroup extends ViewGroup {
 
         }
 
-        LogUtil.d(i + ", " + childCount + ", " + getChildCount());
+        //LogUtil.d(i + ", " + childCount + ", " + getChildCount());
     }
 
     private void setChildFrame(View child, int left, int top, int width, int height) {

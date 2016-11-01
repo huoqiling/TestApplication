@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import com.example.testing.myapplication.bean.Sign;
-import com.example.testing.myapplication.module.AAtest.TestFragment;
+import com.example.testing.myapplication.module.itemDecoration.ItemDecorationFragment;
 import com.example.testing.myapplication.util.LogUtil;
 import com.example.testing.myapplication.view.NameTagsLinearViewGroup;
 import java.util.ArrayList;
@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
         viewGroup.setListSigns(name, list);
 
 
-        //getSupportFragmentManager().beginTransaction()
-        //        .replace(android.R.id.content, getFragment(), "mainFragemnt")
-        //        .commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, getFragment(), "mainFragemnt")
+                .commit();
 
 
         //getSupportFragmentManager().beginTransaction()
@@ -103,9 +103,12 @@ public class MainActivity extends AppCompatActivity {
                 //new CustomViewFragment()
 
 
-                new TestFragment()
+                //new TestFragment()
 
                 //new HighLightFragment()
+
+                new ItemDecorationFragment()
+
 
                 ;
     }

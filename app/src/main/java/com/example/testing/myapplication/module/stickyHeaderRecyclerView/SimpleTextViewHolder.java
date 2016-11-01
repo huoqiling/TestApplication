@@ -31,7 +31,7 @@ public class SimpleTextViewHolder extends RecyclerView.ViewHolder {
         if (position % 2 == 0) {
             itemView.setBackgroundResource(android.R.color.darker_gray);
         } else {
-            itemView.setBackgroundResource(android.R.color.background_light);
+            itemView.setBackgroundResource(android.R.color.holo_purple);
         }
     }
 
