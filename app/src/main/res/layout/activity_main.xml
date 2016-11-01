@@ -7,12 +7,22 @@
     tools:context="com.example.testing.myapplication.MainActivity"
     >
 
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="点击看看"
         />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="50dp"
+        android:layerType="software"
+        android:background="@drawable/dash"
+        />
+
 
     <!--<com.example.testing.myapplication.view.UnderLineTextView-->
     <!--android:id="@+id/textView"-->
@@ -98,17 +108,29 @@
     <!--/>-->
 
     <TextView
-        android:id="@+id/tv_test"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:background="@drawable/rect_rudis"
         android:gravity="center"
-        android:padding="10dp"
         android:text="哈哈哈哈哈哈"
+        android:textSize="10dp"
         />
 
-    <com.example.testing.myapplication.view.CompanyTagsLinearViewGroup
+
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="哈哈哈哈哈哈"
+        android:textSize="10dp"
+        />
+
+    <com.example.testing.myapplication.view.NameTagsLinearViewGroup
         android:id="@+id/nameTagsLinearViewGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

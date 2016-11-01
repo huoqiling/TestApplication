@@ -1,16 +1,15 @@
 package com.example.testing.myapplication;
 
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
-import android.text.Spanned;
 import android.widget.TextView;
 import com.example.testing.myapplication.bean.Sign;
 import com.example.testing.myapplication.module.AAtest.TestFragment;
 import com.example.testing.myapplication.util.LogUtil;
-import com.example.testing.myapplication.view.CompanyTagsLinearViewGroup;
+import com.example.testing.myapplication.view.NameTagsLinearViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,19 +19,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         TextView tv_test = (TextView) findViewById(R.id.tv_test);
 
-        String s = "<font colot='#FF969FA9' size='1000'>哈哈哈哈</font>"
-                + " <font color='#FF5a626d'><strong>"
-                + "6666"
-                + "</strong></font> "
-                + "<font "
-                + "colot='#FF969FA9'>哈哈哈哈</font>";
-        Spanned spanned = Html.fromHtml(s);
-        tv_test.setText(spanned);
+        GradientDrawable drawable = (GradientDrawable) getResources().getDrawable(R.drawable.rect_rudis);
+        drawable.setStroke(3, getResources().getColor(R.color.colorPrimary));
+        tv_test.setBackgroundDrawable(drawable);
 
-        CompanyTagsLinearViewGroup viewGroup = (CompanyTagsLinearViewGroup) findViewById(R.id.nameTagsLinearViewGroup);
+        //String s = "<font colot='#FF969FA9' size='1000'>哈哈哈哈</font>"
+        //        + " <font color='#FF5a626d'><strong>"
+        //        + "6666"
+        //        + "</strong></font> "
+        //        + "<font "
+        //        + "colot='#FF969FA9'>哈哈哈哈</font>";
+        //Spanned spanned = Html.fromHtml(s);
+        //tv_test.setText(spanned);
+        //tv_test.setBackgroundDrawable(new RoundDrawable(getResources().getColor(R.color.colorAccent), 2, true));
+
+        //drawable.setPadding(new Rect(4, 4, 4, 4));
+        //drawable.setShape(Shape s);
+
+
+        NameTagsLinearViewGroup viewGroup = (NameTagsLinearViewGroup) findViewById(R.id.nameTagsLinearViewGroup);
 
         List<Sign> list = new ArrayList<>();
         for (int i = 0; i < 3; ++i) {

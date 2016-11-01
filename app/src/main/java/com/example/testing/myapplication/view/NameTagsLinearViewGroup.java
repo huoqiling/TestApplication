@@ -25,23 +25,23 @@ import java.util.List;
  * date: on 16/10/27 11:36
  * description:
  */
-public class CompanyTagsLinearViewGroup extends ViewGroup {
+public class NameTagsLinearViewGroup extends ViewGroup {
     public static final int MIN_WIDTH = 500;
 
-    public CompanyTagsLinearViewGroup(Context context) {
+    public NameTagsLinearViewGroup(Context context) {
         super(context);
     }
 
-    public CompanyTagsLinearViewGroup(Context context, AttributeSet attrs) {
+    public NameTagsLinearViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CompanyTagsLinearViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
+    public NameTagsLinearViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public CompanyTagsLinearViewGroup(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public NameTagsLinearViewGroup(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -61,6 +61,13 @@ public class CompanyTagsLinearViewGroup extends ViewGroup {
             textView.setTextColor(color);
             textView.setTypeface(Typeface.DEFAULT_BOLD);
             textView.setText(name);
+
+            char[] chars = { '\u2026' };
+            float measureText = textView.getPaint()
+                    .measureText("哈哈哈哈哈哈哈哈" + new String(chars));
+
+            LogUtil.d("measureText: " + measureText);
+
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-2, -2);
             params.rightMargin = 9;
             addView(textView, params);
