@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import com.example.testing.myapplication.bean.Sign;
-import com.example.testing.myapplication.module.itemDecoration.ItemDecorationFragment;
+import com.example.testing.myapplication.module.pageSliding.PageSlidingFragment;
 import com.example.testing.myapplication.util.LogUtil;
 import com.example.testing.myapplication.view.NameTagsLinearViewGroup;
 import java.util.ArrayList;
@@ -107,8 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //new HighLightFragment()
 
-                new ItemDecorationFragment()
+                //new ItemDecorationFragment()
 
+                new PageSlidingFragment()
 
                 ;
     }
