@@ -1,29 +1,26 @@
 package com.example.testing.myapplication;
 
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
-import com.example.testing.myapplication.bean.Sign;
-import com.example.testing.myapplication.module.pageSliding.PageSlidingFragment;
-import com.example.testing.myapplication.util.LogUtil;
-import com.example.testing.myapplication.view.NameTagsLinearViewGroup;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.example.testing.myapplication.module.LikeViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView tv_test = (TextView) findViewById(R.id.tv_test);
+        replaceByFragment();
+//        TextView tv_test = (TextView) findViewById(R.id.tv_test);
+//
+//        GradientDrawable drawable = (GradientDrawable) getResources().getDrawable(R.drawable.rect_rudis);
+//        drawable.setStroke(3, getResources().getColor(R.color.colorPrimary));
+//        tv_test.setBackgroundDrawable(drawable);
 
-        GradientDrawable drawable = (GradientDrawable) getResources().getDrawable(R.drawable.rect_rudis);
-        drawable.setStroke(3, getResources().getColor(R.color.colorPrimary));
-        tv_test.setBackgroundDrawable(drawable);
 
         //String s = "<font colot='#FF969FA9' size='1000'>哈哈哈哈</font>"
         //        + " <font color='#FF5a626d'><strong>"
@@ -39,21 +36,16 @@ public class MainActivity extends AppCompatActivity {
         //drawable.setShape(Shape s);
 
 
-        NameTagsLinearViewGroup viewGroup = (NameTagsLinearViewGroup) findViewById(R.id.nameTagsLinearViewGroup);
-
-        List<Sign> list = new ArrayList<>();
-        for (int i = 0; i < 3; ++i) {
-            list.add(new Sign("#123456", "哈哈" + i));
-        }
-        LogUtil.d(list.size());
-
-        String name = "你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好";
-        viewGroup.setListSigns(name, list);
-
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(android.R.id.content, getFragment(), "mainFragemnt")
-                .commit();
+//        NameTagsLinearViewGroup viewGroup = (NameTagsLinearViewGroup) findViewById(R.id.nameTagsLinearViewGroup);
+//
+//        List<Sign> list = new ArrayList<>();
+//        for (int i = 0; i < 3; ++i) {
+//            list.add(new Sign("#123456", "哈哈" + i));
+//        }
+//        LogUtil.d(list.size());
+//
+//        String name = "你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好";
+//        viewGroup.setListSigns(name, list);
 
 
         //getSupportFragmentManager().beginTransaction()
@@ -74,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
         //        .add(promptDialogFragment, "prompt")
         //        .commitAllowingStateLoss();
 
+    }
+
+
+    private void replaceByFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, getFragment(), "mainFragemnt")
+                .commit();
     }
 
 
@@ -109,7 +108,10 @@ public class MainActivity extends AppCompatActivity {
 
                 //new ItemDecorationFragment()
 
-                new PageSlidingFragment()
+//                new PageSlidingFragment()
+
+                new LikeViewFragment()
+
 
                 ;
     }
