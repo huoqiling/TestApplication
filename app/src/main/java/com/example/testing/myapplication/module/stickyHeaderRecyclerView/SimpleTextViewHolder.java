@@ -28,11 +28,11 @@ public class SimpleTextViewHolder extends RecyclerView.ViewHolder {
 
         textView.setText("position: " + String.valueOf(position));
 
-        if (position % 2 == 0) {
-            itemView.setBackgroundResource(android.R.color.darker_gray);
-        } else {
-            itemView.setBackgroundResource(android.R.color.holo_purple);
-        }
+        //if (position % 2 == 0) {
+        //    itemView.setBackgroundResource(android.R.color.darker_gray);
+        //} else {
+        //    itemView.setBackgroundResource(android.R.color.holo_purple);
+        //}
     }
 
     public void bind(String text) {

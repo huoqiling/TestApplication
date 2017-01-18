@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.testing.myapplication.R;
+import com.example.testing.myapplication.view.MyDecoration;
 
 /**
  * author: baiiu
@@ -28,6 +29,7 @@ public class RecyclerViewFragment extends Fragment implements LoadingMoreScrollL
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.addItemDecoration(new MyDecoration());
         mAdapter = new SimpleTextAdapter(getContext(), 20);
         recyclerView.setAdapter(mAdapter);
 

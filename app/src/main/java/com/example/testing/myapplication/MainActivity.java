@@ -4,8 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-
-import com.example.testing.myapplication.module.LikeViewFragment;
+import com.example.testing.myapplication.module.loadmoreRecyclerView.RecyclerViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 //new RandomColorFragment(),
                 //new TabFragment(),
                 //new StickyHeaderFragment()
-                //new RecyclerViewFragment()
+                new RecyclerViewFragment()
 
                 //new FastScrollFragment()
 
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
 //                new PageSlidingFragment()
 
-                new LikeViewFragment()
+                //new LikeViewFragment()
 
 
                 ;
