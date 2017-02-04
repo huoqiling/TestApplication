@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 //new RandomColorFragment(),
                 //new TabFragment(),
                 //new StickyHeaderFragment()
-                new RecyclerViewFragment()
 
                 //new FastScrollFragment()
 
@@ -93,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //new PtrPageFragment()
 
+                new RecyclerViewFragment()
                 //new BadgeViewFragment()
 
                 //new ServiceFragment()
