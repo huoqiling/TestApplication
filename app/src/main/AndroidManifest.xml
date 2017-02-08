@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.wandoujiaStyle.DetailActivity"
+            />
+
         <service
             android:name=".service.TestIntentService"
             android:exported="false">
@@ -28,7 +31,6 @@
             android:enabled="true"
             android:exported="true">
         </service>
-
 
 
     </application>

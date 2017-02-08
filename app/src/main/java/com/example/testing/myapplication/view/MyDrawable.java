@@ -20,33 +20,18 @@ public class MyDrawable extends Drawable {
 
     public MyDrawable() {
         mPaint = new Paint();
-        mPaint.setColor(Color.GREEN);
+        mPaint.setColor(Color.parseColor("#1A000000"));
         mPaint.setAntiAlias(true);
         mPaint.setTextAlign(Paint.Align.LEFT);
         mPaint.setTextSize(54);
     }
 
-    public void setTextAlign(boolean left){
-        mPaint.setTextAlign(left ? Paint.Align.LEFT : Paint.Align.RIGHT);
-    }
-
     @Override public void draw(@NonNull Canvas canvas) {
         Rect r = getBounds();
-        //canvas.drawColor(Color.parseColor("#22000000"));
 
         canvas.save();
-        Paint.FontMetrics fm = mPaint.getFontMetrics();
-        float ceil = (float) (Math.ceil(fm.descent - fm.ascent) / 2F);
-
-
-        canvas.translate(ceil,0);
         canvas.rotate(-30, r.left, r.bottom);
-
-
         canvas.drawText("哈哈哈哈哈哈哈", r.left, r.bottom, mPaint);
-
-        //LogUtil.d("myDrawable:::: " + r.top + ", " + r.bottom + ", " + r.toString());
-
         canvas.restore();
     }
 
